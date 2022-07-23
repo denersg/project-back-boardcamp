@@ -4,8 +4,8 @@ import { getCustomers, getCustomerById, addCustomer, updateCustomer } from "../c
 const customerRouter = Router();
 
 customerRouter.get("/customers", getCustomers);
-customerRouter.get("/customers", getCustomerById);
+customerRouter.get("/customers/:id", getCustomerById);
 customerRouter.post("/customers", addCustomer);
-customerRouter.put("/customers", updateCustomer);
+customerRouter.put("/customers/:id", updateCustomer);
 
 export default customerRouter;
