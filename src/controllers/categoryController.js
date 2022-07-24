@@ -12,18 +12,15 @@ export async function getCategories(req, res){
     }
 }
 
-export default function addCategory(req, res){
+export async function addCategory(req, res){
     try{
         const category = req.body;
         const validation = categorySchema.validate(category);
         if(validation.error){
-            return( res.sendStatus(400) );
+            return res.sendStatus(400);
         }
 
-        //Não pode ser categoria já existente
-        const categoryAlreadyExists = await db.query(`
-            SELECT id FROM categories WHERE name=$1
-        `, [category.name]);
+        const categoryAlreadyExists = await db.query("SELECT id FROM categories WHERE name=$1", [category.name]);
         if(categoryAlreadyExists.rowCount > 0){
             return res.sendStatus(409);
         }

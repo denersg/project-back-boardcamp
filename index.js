@@ -10,6 +10,8 @@ const app = express();//Cria o servidor
 app.use(cors());
 app.use(json());
 
+app.use(router);
+
 app.listen(process.env.PORT, () => {
     const serverOn = chalk.hex("#F76916");
     console.log(serverOn.bold("Server de pé na porta " + process.env.PORT));

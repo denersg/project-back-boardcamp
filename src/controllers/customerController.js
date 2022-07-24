@@ -8,7 +8,7 @@ export async function getCustomers(req, res){
         const queryParams = [];
         let where = "";
         
-        //Se houver busca por 'cpf', adiciona no final da query de seleção.
+        //Se houver uma busca por 'cpf', adiciona no final da query de seleção.
         if(cpf){
             queryParams.push(`${cpf}%`);
             where += `WHERE cpf ILIKE $${queryParams.length}`;
